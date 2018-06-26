@@ -1,0 +1,41 @@
+X As a player
+X I want to see my player character
+X So that I can contextualize my gameplay
+\\
+\\
+X As a player
+X I want to be able to move my character around the screen
+X So that I can interact with the environment 
+\\
+\\
+# As a player character
+# I want to collide with certain things
+# so that I cant walk through walls
+
+==================================
+# extract tiles from tiles surface
+# replace my Sprite class with pygame Sprite?
+# get character tile
+# move character around
+# collisions
+# change sprite color
+# config
+#* view settings
+#* tiles location
+#* other options
+#* keyboard settings
+# menus
+#* take control from other handlers
+#* draw menus
+--------------
+# animated sprites
+# character
+#* health
+#* inventory
+# npcs
+# world
+#* generate floors and walls
+#* generate items
+#* spawn npcs
+#* move up and down stairs
+# items

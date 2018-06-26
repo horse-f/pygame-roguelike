@@ -2,22 +2,22 @@ from src.game import Engine;
 from src.game import Render;
 from src.game import Keyboard;
 from src.game import Event;
+from src.game import Config;
 
 import pygame;
 from pygame.locals import *;
 from pygame.time import Clock;
 
-FRAMERATE = 60;
+FRAMERATE = 144;
 
 def onQuit(eventInfo) :
-    print('handling event', eventInfo);
     Engine.running = False;
-    cleanup();
 
 def init():
     pygame.init();
     Render.init((1280,720));
     Keyboard.init();
+    Config.init();
     Engine.clock = Clock();
 
 def cleanup():

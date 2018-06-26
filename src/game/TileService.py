@@ -1,15 +1,24 @@
 print('tile service');
 
+import pygame;
 from src.game.sprite import Sprite;
-from src.game import SpriteService;
 
 # get tile sheet
 tiles = None;
 size = 0;
 
-def getTile(tileName):
-    return Sprite(None, (size, size));
+def getTile(pos):
+    surf = pygame.Surface((size,size));
+    rect = (pos[0]*size, pos[1]*size, size, size);
+    surf.blit(tiles, (0,0), rect);
+
+    return Sprite(surf, {
+        'w': size,
+        'h': size
+    });
 
 def loadTiles(src, s) :
+    global tiles;
+    global size;
     size = s;
-    tiles = SpriteService.loadSpriteSheet(src, (size, size));
+    tiles = pygame.image.load(src).convert();

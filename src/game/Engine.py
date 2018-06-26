@@ -2,6 +2,8 @@ print('Engine');
 
 import pygame;
 from src.game import TileService;
+from src.game import Config;
+from src.game import Render;
 
 controllers = [];
 
@@ -10,7 +12,7 @@ running = True;
 paused = True;
 
 def load() : 
-    TileService.loadTiles('src', 20);
+    TileService.loadTiles(Config.settings['tileSheet'], 20);
 
     for _controller in controllers :
         _controller.load();
@@ -24,8 +26,12 @@ def updateWorld() :
         _controller.updateWorld();
 
 def draw() :
+    Render.clear();
+
     for _controller in controllers : 
         _controller.draw();
+
+    Render.flip();
 
 
 def controller(ctl) :

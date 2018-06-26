@@ -3,7 +3,7 @@ from src.game import Event;
 from functools import partial;
 
 def init() :
-    pygame.key.set_repeat(500, 50);
+    pygame.key.set_repeat(500, 35);
 
 def on(keyEvents, fn):
     for keyEvent in keyEvents :
