@@ -27,11 +27,11 @@ def updateWorld() :
 
 def draw() :
     Render.clear();
-
-    for _controller in controllers : 
-        _controller.draw();
-
+    Render.draw();
     Render.flip();
+
+    # for _controller in controllers : 
+    #     _controller.draw();
 
 
 def controller(ctl) :

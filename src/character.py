@@ -6,16 +6,24 @@ from src.game import Render;
 from src.game import TileService;
 from src.base import Base;
 from src.game import Keyboard;
+from pygame.sprite import Sprite;
 
-class Character(Base) :
+class Character(Sprite) :
     def __init__(self) :
-        self.pos = {
-            'x': 20,
-            'y': 80
-        };
-        self.tile = None;
+        Sprite.__init__(self);
+        self.image = None;
+        self.rect = None;
 
         # collisions
+
+    def move(self,x,y) :
+        # check collisions
+        self.rect = (
+            self.rect[0] + x * TileService.size,
+            self.rect[1] + y * TileService.size,
+            TileService.size,
+            TileService.size
+        );
 
 
 class CharacterController(Base) : 
@@ -77,7 +85,14 @@ class CharacterController(Base) :
 
 
     def load(self) :
-        self.Character.tile = TileService.getTile((0,4));
+        self.Character.image = TileService.getTile((0,4));
+        self.Character.rect  = (
+            1 * TileService.size,
+            4 * TileService.size,
+            TileService.size,
+            TileService.size
+        );
+        Render.add(self.Character);
 
     # def update(self) :
     #     pass;
@@ -85,46 +100,35 @@ class CharacterController(Base) :
     # def updateWorld(self):
     #     pass
 
-    def draw(self) : 
-        Render.draw(self.Character.tile, self.Character.pos);
+    ############## dont need this
+    # def draw(self) : 
+    #     Render.draw(self.Character.tile, self.Character.pos);
 
     ## character actions
 
     def moveUp(self, eventInfo):
-        self.Character.pos['y'] += -self.Character.tile.size['h'];
-        # print('********* moving up', self.Character.pos);
+        self.Character.move(0,-1);
 
     def moveDown(self, eventInfo):
-        self.Character.pos['y'] += self.Character.tile.size['h'];
-        # print('********* moving down', self.Character.pos);
+        self.Character.move(0, 1);
 
     def moveRight(self, eventInfo):
-        self.Character.pos['x'] += self.Character.tile.size['w'];
-        # print('********* moving right', self.Character.pos);
+        self.Character.move(1,0);
 
     def moveLeft(self, eventInfo):
-        self.Character.pos['x'] += -self.Character.tile.size['w'];
-        # print('********* moving left', self.Character.pos);
+        self.Character.move(-1,0);
 
     def moveUpRight(self, eventInfo):
-        self.Character.pos['x'] += self.Character.tile.size['w'];
-        self.Character.pos['y'] += -self.Character.tile.size['h'];
-        # print('********* moving up and right', self.Character.pos);
+        self.Character.move(1,-1);
 
     def moveUpLeft(self, eventInfo):
-        self.Character.pos['x'] += -self.Character.tile.size['w'];
-        self.Character.pos['y'] += -self.Character.tile.size['h'];
-        # print('********* moving up and left', self.Character.pos);
+        self.Character.move(-1,-1);
 
     def moveDownRight(self, eventInfo):
-        self.Character.pos['x'] += self.Character.tile.size['w'];
-        self.Character.pos['y'] += self.Character.tile.size['h'];
-        # print('********* moving down and right', self.Character.pos);
+        self.Character.move(1,1);
 
     def moveDownLeft(self, eventInfo):
-        self.Character.pos['x'] += -self.Character.tile.size['w'];
-        self.Character.pos['y'] += self.Character.tile.size['h'];
-        # print('********* moving down and left', self.Character.pos);
+        self.Character.move(-1,1);
 
     # other things like control setup
 

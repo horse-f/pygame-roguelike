@@ -1,20 +1,27 @@
 print('Render');
 
 import pygame;
+from pygame.sprite import RenderClear;
 
 display = None;
+renderGroup = RenderClear();
+
 
 def init(screenSize):
     global display;
     display = pygame.display.set_mode(screenSize, pygame.HWSURFACE | pygame.DOUBLEBUF);
 
-def draw(sprite, pos) :
-    if(sprite.surf) :
-        # print('drawing', sprite, 'at', (pos['x'], pos['y']));
-        display.blit(sprite.surf,(pos['x'], pos['y']));
+def draw() :
+    renderGroup.draw(display);
     
 def flip() :
     pygame.display.flip();
 
 def clear():
-    display.fill((0,0,0));
+    def cb(surf, rect) :
+        surf.fill((0,0,0),rect);
+
+    renderGroup.clear(display, cb);
+
+def add(sprite):
+    renderGroup.add(sprite);
