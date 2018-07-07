@@ -6,10 +6,12 @@ class Wall(Sprite) :
         Sprite.__init__(self);
         self.image = None;
         self.rect = None;
+        pass;
 
 class Geometry(Group):
     def __init__(self):
         Group.__init__(self);
+        pass;
 
     def load(self):
         pass

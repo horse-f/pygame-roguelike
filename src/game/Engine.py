@@ -17,21 +17,22 @@ def init():
     Render.init((1280,720));
     Keyboard.init();
     Config.init();
+    pass;
 
 def load() :
     Config.load();
     Keyboard.load();
     TileService.loadTiles(Config.settings['tile_sheet'], 20);
     SceneRouter.load();
+    pass;
 
 def update() :
     SceneRouter.update();
-
-# def updateWorld() :
-#     SceneRouter.updateWorld();
+    pass;
 
 def draw() :
     Render.clear();
     Render.draw();
     Render.flip();
+    pass;
 

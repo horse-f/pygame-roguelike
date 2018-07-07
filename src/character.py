@@ -13,6 +13,7 @@ class Character(Sprite) :
         self.rect = None;
 
         # collisions
+        pass;
 
     def move(self,x,y) :
         # check collisions
@@ -22,12 +23,13 @@ class Character(Sprite) :
             TileService.size,
             TileService.size
         );
+        pass;
 
 
-class CharacterController(Controller) : 
+class CharacterController(Controller) :
     def __init__(self, _character) :
         self.character = _character;
-
+        pass;
 
     def load(self) :
         self.character.image = TileService.getTile((0,4));
@@ -38,37 +40,55 @@ class CharacterController(Controller) :
             TileService.size
         );
 
-    def update(self) :
-        Keyboard.ifAction(Keyboard.keymap['MOVE_UP'], moveUp);
+        Keyboard.on(Keyboard.keymap['MOVE_UP'], self.moveUp);
+        Keyboard.on(Keyboard.keymap['MOVE_RIGHT'], self.moveRight);
+        Keyboard.on(Keyboard.keymap['MOVE_LEFT'], self.moveLeft);
+        Keyboard.on(Keyboard.keymap['MOVE_DOWN'], self.moveDown);
+        Keyboard.on(Keyboard.keymap['MOVE_UP_RIGHT'], self.moveUpRight);
+        Keyboard.on(Keyboard.keymap['MOVE_UP_LEFT'], self.moveUpLeft);
+        Keyboard.on(Keyboard.keymap['MOVE_DOWN_RIGHT'], self.moveDownRight);
+        Keyboard.on(Keyboard.keymap['MOVE_DOWN_LEFT'], self.moveDownLeft);
         pass;
 
-    # def updateWorld(self):
+
+    def update(self) :
+        pass;
+
+
 
     ## character actions
 
     def moveUp(self, eventInfo):
         self.character.move(0,-1);
+        pass;
 
     def moveDown(self, eventInfo):
         self.character.move(0, 1);
+        pass;
 
     def moveRight(self, eventInfo):
         self.character.move(1,0);
+        pass;
 
     def moveLeft(self, eventInfo):
         self.character.move(-1,0);
+        pass;
 
     def moveUpRight(self, eventInfo):
         self.character.move(1,-1);
+        pass;
 
     def moveUpLeft(self, eventInfo):
         self.character.move(-1,-1);
+        pass;
 
     def moveDownRight(self, eventInfo):
         self.character.move(1,1);
+        pass;
 
     def moveDownLeft(self, eventInfo):
         self.character.move(-1,1);
+        pass;
 
     # other things like control setup
 

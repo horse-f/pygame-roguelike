@@ -15,9 +15,11 @@ def init():
     pygame.init();
     Engine.init();
     Engine.clock = Clock();
+    pass;
 
 def cleanup():
     pygame.quit();
+    pass;
 
 if __name__ == '__main__':
     init();
@@ -31,9 +33,9 @@ if __name__ == '__main__':
     ##############################################
 
     while(Engine.running) :
-        # Event.digest();
         Engine.draw();
         Engine.update();
+        Event.digest();
         Engine.clock.tick(FRAMERATE);
 
     cleanup();

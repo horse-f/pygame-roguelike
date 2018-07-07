@@ -16,6 +16,7 @@ def load():
     # parse settings, make sure all the required keys exist
     # if a key does not exist in the file, replace it in the settings with the default
     print('config is', settings);
+    pass;
 
 
 
