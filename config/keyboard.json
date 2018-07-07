@@ -1,0 +1,46 @@
+{
+    "MOVE_UP": [{
+        "mod": "KMOD_NONE",
+        "key": "K_UP"
+    }, {
+        "mod": "KMOD_NONE",
+        "key": "K_KP8"
+    }],
+    "MOVE_DOWN": [{
+        "mod": "KMOD_NONE",
+        "key": "K_DOWN"
+    }, {
+        "mod": "KMOD_NONE",
+        "key": "K_KP2"
+    }],
+    "MOVE_RIGHT": [{
+        "mod": "KMOD_NONE",
+        "key": "K_RIGHT"
+    }, {
+        "mod": "KMOD_NONE",
+        "key": "K_KP6"
+    }],
+    "MOVE_LEFT": [{
+        "mod": "KMOD_NONE",
+        "key": "K_LEFT"
+    }, {
+        "mod": "KMOD_NONE",
+        "key": "K_KP4"
+    }],
+    "MOVE_UP_RIGHT": [{
+        "mod": "KMOD_NONE",
+        "key": "K_KP9"
+    }],
+    "MOVE_UP_LEFT": [{
+        "mod": "KMOD_NONE",
+        "key": "K_KP7"
+    }],
+    "MOVE_DOWN_RIGHT": [{
+        "mod": "KMOD_NONE",
+        "key": "K_KP3"
+    }],
+    "MOVE_DOWN_LEFT": [{
+        "mod": "KMOD_NONE",
+        "key": "K_KP1"
+    }]
+}

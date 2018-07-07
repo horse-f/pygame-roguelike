@@ -25,3 +25,6 @@ def clear():
 
 def add(sprite):
     renderGroup.add(sprite);
+
+def remove(sprite):
+    renderGroup.remove(sprite);

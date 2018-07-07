@@ -1,19 +1,22 @@
 print('Config');
 
+from src.game import FS;
+
 settings = {};
 keyboardSettings = {};
 
 def init():
-    global settings;
-    settings['tileSheet'] = 'assets/tiles.png';
-    loadSettings();
-    loadKeyboard();
+    # look for settings in the folder
+    # if no settings exist, output default settings
+    pass;
 
-def loadSettings():
+def load():
     global settings;
-    print('********** load settings');
+    settings = FS.readJson('config/config.json');
+    # parse settings, make sure all the required keys exist
+    # if a key does not exist in the file, replace it in the settings with the default
+    print('config is', settings);
 
-def loadKeyboard():
-    global keyboardSettings;
-    print('********** load keyboard');
+
+
 

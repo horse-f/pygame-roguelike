@@ -1,8 +1,6 @@
 from src.game import Engine;
-from src.game import Render;
-from src.game import Keyboard;
 from src.game import Event;
-from src.game import Config;
+from src.game import SceneRouter;
 
 import pygame;
 from pygame.locals import *;
@@ -15,9 +13,7 @@ def onQuit(eventInfo) :
 
 def init():
     pygame.init();
-    Render.init((1280,720));
-    Keyboard.init();
-    Config.init();
+    Engine.init();
     Engine.clock = Clock();
 
 def cleanup():
@@ -28,25 +24,16 @@ if __name__ == '__main__':
 
     Event.on(pygame.QUIT, onQuit);
 
-    # Keyboard.on([{
-    #     'key': pygame.K_c,
-    #     'mod': pygame.KMOD_LCTRL
-    # }, {
-    #     'key': pygame.K_c,
-    #     'mod': pygame.KMOD_RCTRL
-    # }], onQuit);
-
     Engine.load();
 
-    while(Engine.running) :
-        Event.digest();
+    ##################### test ###################
+    SceneRouter.changeScene('game.World');
+    ##############################################
 
+    while(Engine.running) :
+        # Event.digest();
         Engine.draw();
         Engine.update();
-
-        if(not Engine.paused) :
-            Engine.updateWorld();
-
         Engine.clock.tick(FRAMERATE);
 
     cleanup();

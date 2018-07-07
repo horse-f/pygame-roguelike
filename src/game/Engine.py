@@ -4,35 +4,34 @@ import pygame;
 from src.game import TileService;
 from src.game import Config;
 from src.game import Render;
+from src.game import SceneRouter;
+from src.game import Keyboard;
 
-controllers = [];
+scene = None;
 
 clock = None;
 running = True;
-paused = True;
+paused = False;
 
-def load() : 
-    TileService.loadTiles(Config.settings['tileSheet'], 20);
+def init():
+    Render.init((1280,720));
+    Keyboard.init();
+    Config.init();
 
-    for _controller in controllers :
-        _controller.load();
+def load() :
+    Config.load();
+    Keyboard.load();
+    TileService.loadTiles(Config.settings['tile_sheet'], 20);
+    SceneRouter.load();
 
 def update() :
-    for _controller in controllers :
-        _controller.update();
+    SceneRouter.update();
 
-def updateWorld() :
-    for _controller in controllers : 
-        _controller.updateWorld();
+# def updateWorld() :
+#     SceneRouter.updateWorld();
 
 def draw() :
     Render.clear();
     Render.draw();
     Render.flip();
 
-    # for _controller in controllers : 
-    #     _controller.draw();
-
-
-def controller(ctl) :
-    controllers.append(ctl);
