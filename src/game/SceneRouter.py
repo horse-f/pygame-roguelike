@@ -17,12 +17,13 @@ def addScene(name, obj):
 
 def changeScene(sceneName):
     global scene;
+    
+    if(scene is not None):
+        scene.end();    
 
     _scene = list(filter(lambda x: x['name'] == sceneName, scenes));
 
-    if(len(_scene) == 1):
-        if(scene is not None):
-            scene.end();    
+    if(len(_scene) >= 1):
 
         scene = _scene[0]['obj'];
         scene.start();
@@ -34,14 +35,6 @@ def update():
     global scene;
     if(scene is not None) :
         scene.update();
-
-    pass;
-
-
-def updateWorld() :
-    global scene;
-    if(scene is not None) :
-        scene.updateWorld();
 
     pass;
 

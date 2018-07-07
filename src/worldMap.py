@@ -21,9 +21,7 @@ class Floor(Base) :
 class WorldMap(Controller):
     def __init__(self):
         Controller.__init__(self);
-        self.test  = None;
 
-        
         pass;
 
 
@@ -37,18 +35,13 @@ class WorldMap(Controller):
 
     def buildMap(self):
 
-        ############## TEST ###############
+##################################################
 
         image = TileService.getTile((9,0));
         rect = tuple([ TileService.size * i for i in (10, 10, 1, 1)]);
 
-        self.test = Wall(image,rect);
+        self.add(Wall(image,rect));
 
-        self.add(self.test);
-
-        print('test', self.test);
-
-
-        ###################################
+##################################################
 
         pass;

@@ -1,12 +1,23 @@
 from src.game import Engine;
 from src.game import Event;
 from src.game import SceneRouter;
+from src.game import Keyboard;
 
 import pygame;
 from pygame.locals import *;
 from pygame.time import Clock;
 
 FRAMERATE = 144;
+
+##############################################
+def endScene(eventInfo):
+
+    print('ending scene');
+
+    SceneRouter.changeScene('');
+
+    pass;
+##############################################
 
 def onQuit(eventInfo) :
     Engine.running = False;
@@ -27,6 +38,10 @@ if __name__ == '__main__':
     Event.on(pygame.QUIT, onQuit);
 
     Engine.load();
+
+###############################################################
+    Keyboard.on(Keyboard.keymap['END_SCENE'], endScene);
+###############################################################
 
     ##################### test ###################
     SceneRouter.changeScene('game.World');

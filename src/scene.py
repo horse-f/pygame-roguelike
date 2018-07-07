@@ -3,10 +3,19 @@ from src.game import Render;
 class Scene: 
     def __init__(self):
         self.objects = {};
+
         pass
 
     def add(self, key, obj):
         self.objects[key] = obj;
+        # need to add to the render group if scene is active
+
+        pass;
+
+    def remove(self, key):
+        # remove from scene objects 
+        # remove object from render group if scene is active
+
         pass;
 
     ''' this gets run every frame once the program is initialized and loaded ''' 
@@ -34,6 +43,6 @@ class Scene:
     ''' this gets called right before the scene is changed '''
     def end(self):
         for key in self.objects :
-            Render.remove(obj);
+            Render.remove(self.objects[key]);
 
         pass;
