@@ -12,14 +12,12 @@ def init() :
 def load():
     global keymap;
     keymap = mapKeys(FS.readJson('config/keyboard.json'));
-    print('keys are', keymap);
     pass;
 
 
-def on(keyEvents, fn):
-    print('keyboard on', keyEvents, fn);
+def on(keyEvents, fn, groupName=None):
     for keyEvent in keyEvents :
-        Event.on(pygame.KEYDOWN, partial(handleKey, keyEvent, fn));
+        Event.on(pygame.KEYDOWN, partial(handleKey, keyEvent, fn), groupName);
     pass;
 
 

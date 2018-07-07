@@ -12,6 +12,9 @@ def addScene(name, obj):
         'obj': obj
     });
 
+    pass;
+
+
 def changeScene(sceneName):
     global scene;
 
@@ -24,16 +27,27 @@ def changeScene(sceneName):
         scene = _scene[0]['obj'];
         scene.start();
 
+    pass;
+
+
 def update():
     global scene;
     if(scene is not None) :
         scene.update();
+
+    pass;
+
 
 def updateWorld() :
     global scene;
     if(scene is not None) :
         scene.updateWorld();
 
+    pass;
+
+
 def load() :
     for _scene in scenes :
         _scene['obj'].load();
+
+    pass;

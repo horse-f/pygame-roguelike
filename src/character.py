@@ -1,16 +1,19 @@
 print('character');
 
 import pygame;
-from src.game import TileService;
-from src.controller import Controller;
-from src.game import Keyboard;
-from pygame.sprite import Sprite;
 
-class Character(Sprite) :
-    def __init__(self) :
-        Sprite.__init__(self);
-        self.image = None;
-        self.rect = None;
+from src.game import Keyboard;
+from src.game import TileService;
+
+from src.base import Base;
+from src.controller import Controller;
+
+
+CHARACTER_INPUT_GROUP = 'CHARACTER';
+
+class Character(Base) :
+    def __init__(self,image=None,rect=None) :
+        Base.__init__(self,image,rect);
 
         # collisions
         pass;
@@ -27,8 +30,14 @@ class Character(Sprite) :
 
 
 class CharacterController(Controller) :
-    def __init__(self, _character) :
+    def __init__(self, _character, inputGroupName=None) :
+        Controller.__init__(self);
+
         self.character = _character;
+        self.inputGroup = inputGroupName if inputGroupName is not None else CHARACTER_INPUT_GROUP;
+
+        self.add(self.character);
+
         pass;
 
     def load(self) :
@@ -40,20 +49,19 @@ class CharacterController(Controller) :
             TileService.size
         );
 
-        Keyboard.on(Keyboard.keymap['MOVE_UP'], self.moveUp);
-        Keyboard.on(Keyboard.keymap['MOVE_RIGHT'], self.moveRight);
-        Keyboard.on(Keyboard.keymap['MOVE_LEFT'], self.moveLeft);
-        Keyboard.on(Keyboard.keymap['MOVE_DOWN'], self.moveDown);
-        Keyboard.on(Keyboard.keymap['MOVE_UP_RIGHT'], self.moveUpRight);
-        Keyboard.on(Keyboard.keymap['MOVE_UP_LEFT'], self.moveUpLeft);
-        Keyboard.on(Keyboard.keymap['MOVE_DOWN_RIGHT'], self.moveDownRight);
-        Keyboard.on(Keyboard.keymap['MOVE_DOWN_LEFT'], self.moveDownLeft);
+        Keyboard.on(Keyboard.keymap['MOVE_UP'], self.moveUp, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_RIGHT'], self.moveRight, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_LEFT'], self.moveLeft, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_DOWN'], self.moveDown, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_UP_RIGHT'], self.moveUpRight, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_UP_LEFT'], self.moveUpLeft, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_DOWN_RIGHT'], self.moveDownRight, self.inputGroup);
+        Keyboard.on(Keyboard.keymap['MOVE_DOWN_LEFT'], self.moveDownLeft, self.inputGroup);
         pass;
 
 
     def update(self) :
         pass;
-
 
 
     ## character actions

@@ -2,33 +2,64 @@ print('Event');
 
 import pygame.event;
 
-handlers = [];
+inputGroups = {
+    'MAIN': {
+        'active': True,
+        'handlers': []
+    }
+};
 
-# use input groups to determine what handlers to call
-#  this will allow for different modes of input processing
-#   ex: for pausing the game, all the gameplay inputs would be under
-#       the 'gameplay' group and a scene could enable or disable input
-#       from that group and enable for another group like 'esc_menu' 
-#       or 'inventory'
 
-def on(event, fn) :
-    handlers.append({
+def on(event, fn, groupName=None) :
+    global inputGroups;
+    group = 'MAIN';
+
+    if(groupName is not None) :
+        group = groupName;
+
+    if(group not in inputGroups) :
+        inputGroups[group] = { 
+            'active': True,
+            'handlers': []
+        };
+        
+    inputGroups[group]['handlers'].append({
         'event': event,
         'func': fn
     });
+
     pass;
 
+
 def digest() :
-    global handlers;
     events = pygame.event.get();
 
     for _event in events :
-        print('event', _event);
+        # print('event', _event);
 
-        for handler in handlers :
+        for groupName in inputGroups :
+            group = inputGroups[groupName];
 
-            if(handler['event'] == _event.type) : 
-                handler['func'](_event);
+            if(group['active']):
+                runHandlers(group['handlers'], _event);
+
+    pass;
+
+
+def runHandlers(_handlers, _event):
+
+    for handler in _handlers :
+        if(handler['event'] == _event.type) : 
+            handler['func'](_event);
+
+    pass;
+
+
+def change(groupName, active):
+    global inputGroups;
+
+    if(groupName in inputGroups) :
+        inputGroups[groupName]['active'] = active;
 
     pass;
 

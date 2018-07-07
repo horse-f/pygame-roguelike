@@ -17,3 +17,5 @@ def loadTiles(src, s) :
     global size;
     size = s;
     tiles = pygame.image.load(src).convert();
+
+    pass;
