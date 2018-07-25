@@ -4,24 +4,19 @@ from src.controller import Controller;
 from src.game import TileService;
 
 class Wall(Base) :
-    def __init__(self, image=None, rect=None):
-
-        print('image', image);
-        print('rect', rect);
-
-        Base.__init__(self, image, rect);
+    def __init__(self, image=None, size=0, pos=None):
+        Base.__init__(self, image,size,pos);
         pass;
 
 class Floor(Base) :
-    def __init__(self, image=None, rect=None):
-        Base.__init__(self, image, rect);
+    def __init__(self, image=None,size=0,pos=None):
+        Base.__init__(self, image,size,pos);
         pass;
 
 
 class WorldMap(Controller):
     def __init__(self):
         Controller.__init__(self);
-
         pass;
 
 
@@ -35,13 +30,23 @@ class WorldMap(Controller):
 
     def buildMap(self):
 
+        print('building stuff');
 ##################################################
 
         image = TileService.getTile((9,0));
-        rect = tuple([ TileService.size * i for i in (10, 10, 1, 1)]);
+        size  = TileService.size;
+        pos   = {
+            'x': 10 * size,
+            'y': 10 * size
+        };
+        # rect  = tuple([ TileService.size * i for i in (10, 10, 1, 1)]);
 
-        self.add(Wall(image,rect));
+        wall = Wall(image,size,pos);
+        # wall.rect = rect;
 
-##################################################
+        self.add(wall);
+
 
         pass;
+
+##################################################

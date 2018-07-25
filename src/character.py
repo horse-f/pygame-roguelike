@@ -4,6 +4,7 @@ import pygame;
 
 from src.game import Keyboard;
 from src.game import TileService;
+# from src.game import Collisions;
 
 from src.base import Base;
 from src.controller import Controller;
@@ -12,20 +13,16 @@ from src.controller import Controller;
 CHARACTER_INPUT_GROUP = 'CHARACTER';
 
 class Character(Base) :
-    def __init__(self,image=None,rect=None) :
-        Base.__init__(self,image,rect);
+    def __init__(self,image=None,size=0,pos={'x':0,'y':0}) :
+        Base.__init__(self,image,size,pos);
 
         # collisions
         pass;
 
     def move(self,x,y) :
-        # check collisions
-        self.rect = (
-            self.rect[0] + x * TileService.size,
-            self.rect[1] + y * TileService.size,
-            TileService.size,
-            TileService.size
-        );
+        self.pos['x'] += x * self.size;
+        self.pos['y'] += y * self.size;
+
         pass;
 
 
@@ -41,13 +38,12 @@ class CharacterController(Controller) :
         pass;
 
     def load(self) :
+        self.character.size  = TileService.size;
         self.character.image = TileService.getTile((0,4));
-        self.character.rect  = (
-            1 * TileService.size,
-            4 * TileService.size,
-            TileService.size,
-            TileService.size
-        );
+        self.character.setPos({
+            'x': 1 * TileService.size,
+            'y': 4 * TileService.size
+        });
 
         Keyboard.on(Keyboard.keymap['MOVE_UP'], self.moveUp, self.inputGroup);
         Keyboard.on(Keyboard.keymap['MOVE_RIGHT'], self.moveRight, self.inputGroup);

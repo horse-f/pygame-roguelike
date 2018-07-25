@@ -17,9 +17,11 @@ class World(Scene) :
     def __init__(self):
         Scene.__init__(self);
         self.paused = False;
+        self.WorldMap = WorldMap();
+        self.Character = CharacterController(Character(), self.CHARACTER_GROUP);
 
-        Scene.add(self, 'CharacterController', CharacterController(Character(), self.CHARACTER_GROUP));
-        Scene.add(self, 'WorldMap', WorldMap());
+        Scene.add(self, 'CharacterController', self.Character);
+        Scene.add(self, 'WorldMap', self.WorldMap);
 
         print('CharacterController', self.objects['CharacterController']);
         print('WorldMap', self.objects['WorldMap']);
@@ -28,39 +30,39 @@ class World(Scene) :
 
 
     def load(self):
-        print('loading world');
-
         Scene.load(self);
+
+        print('loading world');
 
         Keyboard.on(Keyboard.keymap['PAUSE'], self.pauseUnpause);
 
 ######################################################################
-        Keyboard.on(Keyboard.keymap['KILL_WALL'], self.killWall);
+        # Keyboard.on(Keyboard.keymap['KILL_WALL'], self.killWall);
+        # Keyboard.on(Keyboard.keymap['GEN_MAP'], self.genMap);
 ######################################################################
 
         pass;
 
 
     def start(self):
-        print('starting world scene');
-
         Scene.start(self);
 
-        self.objects['WorldMap'].buildMap();
+        print('starting world scene');
+
+        self.WorldMap.buildMap();
 
         pass;
 
 
     def end(self) :
-        print('ending world scene');
-
         Scene.end(self);
+
+        print('ending world scene');
 
         pass;
 
 
     def update(self):
-
         Scene.update(self);
 
         pass;
@@ -75,13 +77,20 @@ class World(Scene) :
 
 
 ####################################
-    def killWall(self, eventInfo):
+    # def killWall(self, eventInfo):
 
-        print('kill wall');
+    #     print('kill wall');
 
-        Render.remove(self.objects['WorldMap']);
+    #     # Scene.remove(self, 'WorldMap');
 
-        pass;
+    #     self.WorldMap.empty();
+
+    #     pass;
+
+    # def genMap(self, eventInfo):
+    #     self.objects['WorldMap'].buildMap();
+
+    #     pass;
 ####################################
 
 print('adding world scene');

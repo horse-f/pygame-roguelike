@@ -54,5 +54,9 @@
     "END_SCENE": [{
         "mod": "KMOD_LCTRL",
         "key": "K_DELETE"
+    }],
+    "GEN_MAP": [{
+        "mod": "KMOD_NONE",
+        "key": "K_g"
     }]
 }

@@ -25,11 +25,7 @@ def flip() :
 
 
 def clear():
-    def cb(surf, rect) :
-        surf.fill((0,0,0),rect);
-
-    for drawable in drawables :
-        drawable.clear(display, cb);
+    display.fill((0,0,0));
 
     pass;
 
@@ -41,7 +37,8 @@ def add(sprite):
 
 
 def remove(sprite):
-    drawables.remove(sprite);
+    if(sprite in drawables) :
+        drawables.remove(sprite);
 
     pass;
 
