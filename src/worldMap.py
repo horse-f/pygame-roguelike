@@ -33,7 +33,7 @@ class WorldMap(Controller):
         print('building stuff');
 ##################################################
 
-        image = TileService.getTile((9,0));
+        
         size  = TileService.size;
         pos   = {
             'x': 10 * size,
@@ -41,11 +41,21 @@ class WorldMap(Controller):
         };
         # rect  = tuple([ TileService.size * i for i in (10, 10, 1, 1)]);
 
-        wall = Wall(image,size,pos);
+        # wall = Wall(image,size,pos);
         # wall.rect = rect;
 
-        self.add(wall);
+        # stress test ####################################
+        for i in range(0,128) :
+            for j in range(0,72) :
 
+                image = TileService.getTile((9,0));
+                wallPos = {
+                    'x': i * size,
+                    'y': j * size
+                };
+
+                self.add(Wall(image, size, wallPos));
+        ##################################################
 
         pass;
 

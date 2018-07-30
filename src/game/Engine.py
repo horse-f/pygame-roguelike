@@ -14,9 +14,9 @@ running = True;
 paused = False;
 
 def init():
-    Render.init((1280,720));
     Keyboard.init();
     Config.init();
+    Render.init((1280,720));
     pass;
 
 def load() :

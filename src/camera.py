@@ -1,46 +1,65 @@
 from src.game import Render;
-from copy import copy;
+# from copy import copy;
 
 class Camera:
     def __init__(self):
 
+        self.objects = [];
         self.center = {
             'x': 0,
             'y': 0
         };
-        # self.oldCenter = copy(self.center);
 
         pass;
 
-    def setCenter(self, x, y):
+
+    def focus(self, pos):
+
         self.center = {
-            'x': x,
-            'y': y
+            'x': pos['x'],
+            'y': pos['y']
         };
-        # self.oldCenter = copy(self.center);
+
+        self.offset();
 
         pass;
 
-    def snap(self, objects):
-        # if(self.oldCenter['x'] != self.center['x'] and self.oldCenter['y'] != self.center['y']) :
 
+    def draw(self, display):
+        for obj in self.objects:
+            obj.draw(display);
+
+        pass;
+
+
+    def add(self, obj):
+        self.objects.append(obj);
+
+        pass;
+
+    def remove(self, obj):
+        if(obj in self.objects):
+            self.objects.remove(obj);
+
+        pass;
+
+
+    def offset(self):
         cx = Render.display.get_width()/2;
         cy = Render.display.get_height()/2;
 
-        deltaX = cx - self.center['x'];
-        deltaY = cy - self.center['y'];
+        for obj in self.objects:
+            sprites = obj.sprites();
 
-        for obj in objects: 
-            obj.rect = (
-                obj.pos['x'] + deltaX,
-                obj.pos['y'] + deltaY,
-                obj.size,
-                obj.size
-            );
+            for sprite in sprites:
+                nx = cx - (self.center['x'] - sprite.pos['x']);
+                ny = cy - (self.center['y'] - sprite.pos['y']);
 
-        print('taking snapshot');
+                sprite.rect = (
+                    nx,
+                    ny,
+                    sprite.size,
+                    sprite.size
+                );
 
-        pass;
-
-    def draw(self):
         pass;

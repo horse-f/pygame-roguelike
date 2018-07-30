@@ -22,3 +22,6 @@ class Base(Sprite) :
         );
 
         pass;
+
+    def sprites(self):
+        return self;

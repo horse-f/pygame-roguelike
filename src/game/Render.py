@@ -3,7 +3,7 @@ print('Render');
 import pygame;
 
 display = None;
-drawables = [];
+camera = None;
 
 def init(screenSize):
     global display;
@@ -12,8 +12,7 @@ def init(screenSize):
     pass;
 
 def draw() :
-    for drawable in drawables :
-        drawable.draw(display);
+    camera.draw(display);
 
     pass;
 
@@ -26,19 +25,6 @@ def flip() :
 
 def clear():
     display.fill((0,0,0));
-
-    pass;
-
-
-def add(sprite):
-    drawables.append(sprite);
-
-    pass;
-
-
-def remove(sprite):
-    if(sprite in drawables) :
-        drawables.remove(sprite);
 
     pass;
 

@@ -10,17 +10,25 @@ class Scene:
         else :
             self.mainCamera = cam;
 
+        Render.camera = self.mainCamera;
+
         self.objects = {};
         self.active = False;
 
         pass;
 
+    def setCamera(cam) :
+        self.mainCamera = cam;
+
+        Render.camera = self.mainCamera;
+
+        pass;
 
     def add(self, key, obj):
         self.objects[key] = obj;
 
         if(self.active) :
-            Render.add(self.objects[key]);
+            self.mainCamera.add(self.objects[key]);
 
         pass;
 
@@ -28,7 +36,7 @@ class Scene:
     def remove(self, key):
         if(key in self.objects) :
             if(self.active):
-                Render.remove(self.objects[key]);
+                self.mainCamera.remove(self.objects[key]);
 
             del self.objects[key];
 
@@ -36,7 +44,6 @@ class Scene:
 
 
     def update(self):
-        self.mainCamera.snap(self.objects.values());
 
         for key in self.objects :
             self.objects[key].update();
@@ -54,7 +61,7 @@ class Scene:
     def start(self):
         self.active = True;
         for key in self.objects :
-            Render.add(self.objects[key]);
+            self.mainCamera.add(self.objects[key]);
 
         pass;
 
@@ -62,6 +69,6 @@ class Scene:
     def end(self):
         self.active = False;
         for key in self.objects :
-            Render.remove(self.objects[key]);
+            self.mainCamera.remove(self.objects[key]);
 
         pass;

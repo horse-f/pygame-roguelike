@@ -40,10 +40,13 @@ class CharacterController(Controller) :
     def load(self) :
         self.character.size  = TileService.size;
         self.character.image = TileService.getTile((0,4));
+
+        ###################################################
         self.character.setPos({
             'x': 1 * TileService.size,
             'y': 4 * TileService.size
         });
+        ###################################################
 
         Keyboard.on(Keyboard.keymap['MOVE_UP'], self.moveUp, self.inputGroup);
         Keyboard.on(Keyboard.keymap['MOVE_RIGHT'], self.moveRight, self.inputGroup);

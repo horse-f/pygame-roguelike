@@ -10,3 +10,7 @@ import src.game.Turn;
 import src.character;
 import src.scene;
 import src.world;
+import src.base;
+import src.camera;
+import src.worldMap;
+import src.controller;

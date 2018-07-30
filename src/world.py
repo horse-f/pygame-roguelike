@@ -1,7 +1,6 @@
 print('world');
 
 from src.game import Event;
-from src.game import Render;
 from src.game import SceneRouter;
 from src.game import Keyboard;
 
@@ -36,11 +35,6 @@ class World(Scene) :
 
         Keyboard.on(Keyboard.keymap['PAUSE'], self.pauseUnpause);
 
-######################################################################
-        # Keyboard.on(Keyboard.keymap['KILL_WALL'], self.killWall);
-        # Keyboard.on(Keyboard.keymap['GEN_MAP'], self.genMap);
-######################################################################
-
         pass;
 
 
@@ -65,6 +59,8 @@ class World(Scene) :
     def update(self):
         Scene.update(self);
 
+        self.mainCamera.focus(self.Character.character.pos);
+
         pass;
 
 
@@ -75,23 +71,6 @@ class World(Scene) :
 
         pass;
 
-
-####################################
-    # def killWall(self, eventInfo):
-
-    #     print('kill wall');
-
-    #     # Scene.remove(self, 'WorldMap');
-
-    #     self.WorldMap.empty();
-
-    #     pass;
-
-    # def genMap(self, eventInfo):
-    #     self.objects['WorldMap'].buildMap();
-
-    #     pass;
-####################################
 
 print('adding world scene');
 SceneRouter.addScene('game.World', World());
