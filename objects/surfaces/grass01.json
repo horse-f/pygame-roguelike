@@ -1,0 +1,12 @@
+{
+    "type":"random",
+    "tiles": [{
+        "sprite":[7,2],
+        "color":[0,128,0],
+        "probability":"1"
+    }, {
+        "sprite":[2,2],
+        "color":[0,100,0],
+        "probability":"0.25"
+    }]
+}

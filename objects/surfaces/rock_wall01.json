@@ -1,0 +1,8 @@
+{
+    "type":"sequential",
+    "tiles":[{
+        "sprite":[13,12],
+        "color":[255,255,255],
+        "argument":[4,8,12]
+    }]
+}

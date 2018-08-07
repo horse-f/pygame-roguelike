@@ -45,8 +45,8 @@ class WorldMap(Controller):
         # wall.rect = rect;
 
         # stress test ####################################
-        for i in range(0,128) :
-            for j in range(0,72) :
+        for i in range(0,64) :
+            for j in range(0,36) :
 
                 image = TileService.getTile((9,0));
                 wallPos = {

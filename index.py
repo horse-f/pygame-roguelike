@@ -72,7 +72,7 @@ if __name__ == '__main__':
 
         Engine.clock.tick(FRAMERATE);
 
-        print('FPS', Engine.clock.get_fps());
+        # print('FPS', Engine.clock.get_fps());
         # print('frame', Engine.clock.get_time());
 
     cleanup();
