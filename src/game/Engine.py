@@ -6,6 +6,7 @@ from src.game import Config;
 from src.game import Render;
 from src.game import SceneRouter;
 from src.game import Keyboard;
+from src.game import Objects;
 
 scene = None;
 
@@ -17,6 +18,7 @@ def init():
     Keyboard.init();
     Config.init();
     Render.init((1280,720));
+    Objects.init();
     pass;
 
 def load() :

@@ -15,16 +15,6 @@ drawTime   = 0;
 updateTime = 0;
 eventTime  = 0;
 
-##############################################
-def endScene(eventInfo):
-
-    print('ending scene');
-
-    SceneRouter.changeScene('');
-
-    pass;
-##############################################
-
 def onQuit(eventInfo) :
     Engine.running = False;
 
@@ -44,14 +34,6 @@ if __name__ == '__main__':
     Event.on(pygame.QUIT, onQuit);
 
     Engine.load();
-
-###############################################################
-    Keyboard.on(Keyboard.keymap['END_SCENE'], endScene);
-###############################################################
-
-    ##################### test ###################
-    SceneRouter.changeScene('game.World');
-    ##############################################
 
     while(Engine.running) :
 

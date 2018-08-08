@@ -5,9 +5,10 @@ from src.game import SceneRouter;
 from src.game import Keyboard;
 
 from src.scene import Scene;
-from src.character import Character;
-from src.character import CharacterController;
-from src.worldMap import WorldMap;
+from src.map import Map;
+
+from src.modules.character import Character;
+from src.modules.character import CharacterController;
 
 class World(Scene) :
 
@@ -16,14 +17,11 @@ class World(Scene) :
     def __init__(self):
         Scene.__init__(self);
         self.paused = False;
-        self.WorldMap = WorldMap();
         self.Character = CharacterController(Character(), self.CHARACTER_GROUP);
+        self.TestMap = Map();
 
         Scene.add(self, 'CharacterController', self.Character);
-        Scene.add(self, 'WorldMap', self.WorldMap);
-
-        print('CharacterController', self.objects['CharacterController']);
-        print('WorldMap', self.objects['WorldMap']);
+        Scene.add(self, 'TestMap', self.TestMap);
 
         pass;
 
@@ -32,6 +30,7 @@ class World(Scene) :
         Scene.load(self);
 
         print('loading world');
+        self.TestMap.loadMap('pygame-roguelike-layout-01');
 
         Keyboard.on(Keyboard.keymap['PAUSE'], self.pauseUnpause);
 
@@ -42,8 +41,6 @@ class World(Scene) :
         Scene.start(self);
 
         print('starting world scene');
-
-        self.WorldMap.buildMap();
 
         pass;
 
@@ -74,4 +71,5 @@ class World(Scene) :
 
 print('adding world scene');
 SceneRouter.addScene('game.World', World());
+SceneRouter.changeScene('game.World');
 

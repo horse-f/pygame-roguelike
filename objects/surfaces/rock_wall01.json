@@ -1,8 +1,8 @@
 {
     "type":"sequential",
     "tiles":[{
-        "sprite":[13,12],
+        "sprite":[11,13],
         "color":[255,255,255],
-        "argument":[4,8,12]
+        "position":[4,8,12]
     }]
 }
