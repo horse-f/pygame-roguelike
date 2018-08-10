@@ -1,6 +1,6 @@
 {
+    "category": "weapons",
     "name":"Silver Sword",
-    "type":"weapon",
     "damage":[10,18],
     "sprite":[12,5],
     "icon":[12,5],

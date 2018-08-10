@@ -5,8 +5,8 @@ from src.game import SceneRouter;
 from src.game import Keyboard;
 
 from src.scene import Scene;
-from src.map import Map;
 
+from src.modules.map import Map;
 from src.modules.character import Character;
 from src.modules.character import CharacterController;
 

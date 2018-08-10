@@ -1,5 +1,4 @@
 from src.game import Render;
-# from copy import copy;
 
 class Camera:
     def __init__(self):

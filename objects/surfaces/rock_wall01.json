@@ -1,5 +1,8 @@
 {
+    "category": "surfaces",
     "type":"sequential",
+    "colorKey":[255,255,255],
+    "collisions": true,
     "tiles":[{
         "sprite":[11,13],
         "color":[255,255,255],

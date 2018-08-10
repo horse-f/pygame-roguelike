@@ -12,6 +12,5 @@ import src.scene;
 import src.base;
 import src.camera;
 import src.controller;
-import src.map;
 
 import src.modules;

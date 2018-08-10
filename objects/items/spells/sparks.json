@@ -1,6 +1,6 @@
 {
+    "category":"spells",
     "name":"Sparks",
-    "type":"spell",
     "effect":"blah",
     "cost":"50",
     "icon":[10,2],

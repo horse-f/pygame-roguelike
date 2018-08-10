@@ -1,5 +1,8 @@
 {
+    "category": "surfaces",
     "type":"random",
+    "colorKey":[0,255,0],
+    "collisions": false,
     "tiles": [{
         "sprite":[7,2],
         "color":[0,128,0],
