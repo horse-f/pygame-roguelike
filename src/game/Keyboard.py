@@ -12,20 +12,20 @@ def init() :
 def load():
     global keymap;
     keymap = mapKeys(FS.readJson('config/keyboard.json'));
-    pass;
-
 
 def on(keyEvents, fn, groupName=None):
     for keyEvent in keyEvents :
-        Event.on(pygame.KEYDOWN, partial(handleKey, keyEvent, fn), groupName);
-    pass;
+        if(isinstance(keyEvent, list)):
+            for evt in keyEvent:
+                Event.on(pygame.KEYDOWN, partial(handleKey, evt, fn), groupName);
+        else:
+            Event.on(pygame.KEYDOWN, partial(handleKey, keyEvent, fn), groupName);
 
+                
 
 def handleKey(keyEvent, callback, _event):
     if(keyEvent['key'] == _event.key and keyEvent['mod'] == _event.mod) :
-        callback(_event);
-    pass;
-
+        callback(_event)
 
 def mapKeys(keys):
     mappedKeys = {};
@@ -34,7 +34,6 @@ def mapKeys(keys):
         mappedKeys[key] = list(map(parseKeyDict, keys[key]));
 
     return mappedKeys;
-
 
 def parseKeyDict(keyDict):
     return {

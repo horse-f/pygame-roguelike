@@ -28,8 +28,6 @@ def on(event, fn, groupName=None) :
         'func': fn
     });
 
-    pass;
-
 
 def digest() :
     events = pygame.event.get();
@@ -43,8 +41,6 @@ def digest() :
             if(group['active']):
                 runHandlers(group['handlers'], _event);
 
-    pass;
-
 
 def runHandlers(_handlers, _event):
 
@@ -52,14 +48,11 @@ def runHandlers(_handlers, _event):
         if(handler['event'] == _event.type) : 
             handler['func'](_event);
 
-    pass;
 
-
-def change(groupName, active):
+def setActive(groupName, active):
     global inputGroups;
 
     if(groupName in inputGroups) :
         inputGroups[groupName]['active'] = active;
 
-    pass;
 

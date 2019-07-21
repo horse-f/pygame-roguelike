@@ -1,30 +1,27 @@
 print('Render');
 
 import pygame;
+from src.game import SceneRouter
 
 display = None;
-camera = None;
 
 def init(screenSize):
     global display;
     display = pygame.display.set_mode(screenSize, pygame.HWSURFACE | pygame.DOUBLEBUF);
 
-    pass;
-
 def draw() :
-    camera.draw(display);
-
-    pass;
-
+    camera = SceneRouter.scene.camera
+    if(camera is not None):
+        camera.draw(display);
     
 def flip() :
     pygame.display.flip();
 
-    pass;
-
-
 def clear():
-    display.fill((0,0,0));
+#     display.fill((0,0,0));
+    camera = SceneRouter.scene.camera       
+    if(camera is not None):
+        camera.clear(display,clearCallback)
 
-    pass;
-
+def clearCallback(surf, rect):
+    surf.fill((0,0,0), rect)

@@ -43,6 +43,10 @@
         "mod": "KMOD_NONE",
         "key": "K_KP1"
     }],
+    "TICK": [{
+        "mod": "KMOD_NONE",
+        "key": "K_KP5"
+    }],
     "PAUSE": [{
         "mod": "KMOD_NONE",
         "key": "K_ESCAPE"

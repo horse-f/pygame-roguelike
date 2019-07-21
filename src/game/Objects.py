@@ -15,8 +15,6 @@ def init(_dir='objects'):
 
     fileNames = glob(_glob, recursive=True);
 
-
-
     for fileName in fileNames:
         _json = FS.readJson(fileName);
         _cat = _json.pop('category', None);
@@ -27,5 +25,3 @@ def init(_dir='objects'):
                 objects[_cat] = [];
 
             objects[_cat].append(copy(_json));
-
-    pass;
